@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: alafia-saude
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/back_office
+    username: pedream
+    password: 32357989
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update  # Recomendo "validate" para evitar conflitos com Flyway
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  spring-doc:
+    paths-to-match: /api/**/v1
+    swagger-ui:
+      use-root-path: true
+
