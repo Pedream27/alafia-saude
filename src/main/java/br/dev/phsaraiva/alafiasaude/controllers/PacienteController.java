@@ -1,5 +1,6 @@
 package br.dev.phsaraiva.alafiasaude.controllers;
 
+import br.dev.phsaraiva.alafiasaude.controllers.docs.PacienteControllerDocs;
 import br.dev.phsaraiva.alafiasaude.data.dto.PacienteDTO;
 
 import br.dev.phsaraiva.alafiasaude.data.dto.ProntuarioDTO;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/paciente")
-public class PacienteController {
+public class PacienteController  implements PacienteControllerDocs {
 
     private final PacienteServices service;
 
@@ -63,12 +64,6 @@ public class PacienteController {
 @GetMapping("/{id}/prontuario")
     public ResponseEntity<ProntuarioDTO> getProntuario(@PathVariable("id") Long id) throws Exception {
         var response =  service.findByProntuarioId(id);
-
-
         return  ResponseEntity.ok().body(response);
 }
-
-
-//POST /pacientes/{id}/prontuario – criar prontuário para um paciente
-
 }

@@ -1,12 +1,13 @@
 package br.dev.phsaraiva.alafiasaude.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
-public class Consultas  implements Serializable {
+public class Consulta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -22,6 +23,7 @@ public class Consultas  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "prontuario_id", nullable = false)
+    @JsonIgnore
     private Prontuario prontuario;
 
 

@@ -35,4 +35,10 @@ public class ConsultaServices {
       var  newDto  = parseObject(response , ConsultaDTO.class);
       return addHateosLinks(newDto);
     }
+
+    public void deleteConsulta(Long id) throws Exception {
+       consultaRepository.findById(id).orElseThrow(() -> new Exception("Consulta não encontrada "));
+        consultaRepository.deleteById(id);
+
+    }
 }

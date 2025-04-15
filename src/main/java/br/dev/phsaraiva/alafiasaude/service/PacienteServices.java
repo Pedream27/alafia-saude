@@ -4,6 +4,7 @@ import br.dev.phsaraiva.alafiasaude.controllers.PacienteController;
 import br.dev.phsaraiva.alafiasaude.data.dto.PacienteDTO;
 import br.dev.phsaraiva.alafiasaude.data.dto.ProntuarioDTO;
 import br.dev.phsaraiva.alafiasaude.model.Paciente;
+import br.dev.phsaraiva.alafiasaude.model.Prontuario;
 import br.dev.phsaraiva.alafiasaude.repository.PacienteRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -95,8 +96,8 @@ public class PacienteServices {
     public ProntuarioDTO findByProntuarioId(Long id) throws Exception {
 
       var isPaciente =  repository.findById(id).orElseThrow(() -> new Exception( "Paciente não encontrado "));
-      prontuarioServices.findProntuarioByPaciente(isPaciente) ;
+      var dto = parseObject(isPaciente.getProntuario(), ProntuarioDTO.class);
 
-    return null;
+    return  addHateosLinks(dto);
     }
 }
